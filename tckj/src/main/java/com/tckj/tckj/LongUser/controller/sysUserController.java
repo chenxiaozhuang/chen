@@ -1,0 +1,25 @@
+package com.tckj.tckj.LongUser.controller;
+
+import com.tckj.tckj.LongUser.service.sysUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+
+@Controller
+@RequestMapping("/sysuser")
+public class sysUserController {
+    @Autowired
+    sysUserService userService;
+   @RequestMapping(value = {"/getallsysuser"},method = RequestMethod.GET)
+    public String getAllsysUser(Model model)
+    {
+        model.addAttribute("usermsg", userService.getAllUser());
+        return "index";
+    }
+}
